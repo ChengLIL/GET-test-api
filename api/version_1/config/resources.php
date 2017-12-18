@@ -18,4 +18,8 @@ return array(
         '/{id}' => array('GET', 'DELETE')
     ),
 
+    'tasksByUser' => array(
+        '/{id}' => array('GET', 'POST', 'DELETE')
+    ),
+
 );

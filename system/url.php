@@ -91,7 +91,7 @@ class Url {
 			// Set each individual part of the URI
 			if(isset($segments[0])) {
 				if(preg_match('/^[0-9]$/', $segments[0])) {
-					$this->version = $segments[0];
+					$this->version  = $segments[0];
 					$this->resource = $segments[1];
 					$this->id 		= (isset($segments[2]) ? $segments[2] : false);
 					$this->slug 	= (isset($segments[3]) ? $segments[3] : false);

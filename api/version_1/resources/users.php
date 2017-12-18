@@ -39,7 +39,7 @@ class Users extends Resource {
         $post_name = empty($post_data['name']) ? '' : htmlspecialchars(strip_tags($post_data['name']));
         $post_email = empty($post_data['email']) ? '' : htmlspecialchars(strip_tags($post_data['email']));
 
-        if (!empty($post_name.$post_email)) {
+        if(!empty($post_name.$post_email)) {
             $user_id = Database::insert('INSERT INTO user (`name`, `email`) VALUES (?, ?)', array(
                 $post_name, $post_email
             ));
@@ -56,7 +56,7 @@ class Users extends Resource {
         $result = Database::remove('DELETE FROM user WHERE id = ?', array(
             $this->request->url->id
         ));
-        if (!$result)
+        if(!$result)
             return $this->response->body(204, $result);
         else
             return $this->response->status(200, 'user delete successful !');
