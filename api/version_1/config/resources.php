@@ -13,4 +13,9 @@ return array(
 		'/{id}' => array('GET', 'DELETE')
 	),
 
+    'tasks' => array(
+        '/' => array('GET', 'POST'),
+        '/{id}' => array('GET', 'DELETE')
+    ),
+
 );

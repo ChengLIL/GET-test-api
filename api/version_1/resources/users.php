@@ -35,10 +35,12 @@ class Users extends Resource {
 	 */
 	public function post() {
         $post_data = $this->request->url->query;
-        $post_name = empty($post_data['name']) ? '' : $post_data['name'];
-        $post_email = empty($post_data['email']) ? '' : $post_data['email'];
+        // sanitize
+        $post_name = empty($post_data['name']) ? '' : htmlspecialchars(strip_tags($post_data['name']));
+        $post_email = empty($post_data['email']) ? '' : htmlspecialchars(strip_tags($post_data['email']));
+
         if (!empty($post_name.$post_email)) {
-            $user_id = Database::insert('INSERT INTO user (`id`, `name`, `email`) VALUES (NULL, ?, ?)', array(
+            $user_id = Database::insert('INSERT INTO user (`name`, `email`) VALUES (?, ?)', array(
                 $post_name, $post_email
             ));
             return $this->response->body(201, $user_id);
