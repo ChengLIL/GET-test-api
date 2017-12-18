@@ -24,6 +24,9 @@ class TasksByUser extends Resource {
      */
     public function post() {
         $post_data = $this->request->url->query;
+        if(empty($post_data)) {
+            $post_data = $this->request->input;
+        }
         // sanitize
         $post_title = empty($post_data['title']) ? '' : htmlspecialchars(strip_tags($post_data['title']));
         $post_description = empty($post_data['description']) ? '' : htmlspecialchars(strip_tags($post_data['description']));

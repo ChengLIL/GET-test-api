@@ -35,6 +35,9 @@ class Tasks extends Resource {
      */
     public function post() {
         $post_data = $this->request->url->query;
+        if(empty($post_data)) {
+            $post_data = $this->request->input;
+        }
         // sanitize
         $post_user_id = empty($post_data['user_id']) ? '' : $post_data['user_id'];
         $post_title = empty($post_data['title']) ? '' : htmlspecialchars(strip_tags($post_data['title']));

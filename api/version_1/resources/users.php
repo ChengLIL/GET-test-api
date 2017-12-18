@@ -35,6 +35,9 @@ class Users extends Resource {
 	 */
 	public function post() {
         $post_data = $this->request->url->query;
+        if(empty($post_data)) {
+            $post_data = $this->request->input;
+        }
         // sanitize
         $post_name = empty($post_data['name']) ? '' : htmlspecialchars(strip_tags($post_data['name']));
         $post_email = empty($post_data['email']) ? '' : htmlspecialchars(strip_tags($post_data['email']));
